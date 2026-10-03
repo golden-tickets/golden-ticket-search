@@ -2,7 +2,7 @@
 
 For the pretrained policy weights in our experiments, we use <a href="https://huggingface.co/HuggingFaceVLA/smolvla_libero">LeRobot's finetuned version of SmolVLA for LIBERO: "HuggingFaceVLA/smolvla_libero" </a>. 
 
-There are 5 libero environments you can use as your `env.task`:
+There are 5 LIBERO task suites you can use as your `env.task`:
 - `libero_object`
 - `libero_spatial`
 - `libero_goal`
@@ -12,10 +12,10 @@ There are 5 libero environments you can use as your `env.task`:
 All experiment scripts run from the `smolvla_libero` folder, `src/lottery_tickets/smolvla_libero/`. We have a Python script (a lightly modified copy of `lerobot_eval.py`) that can be used to:
 1. [Generate a new lottery ticket (i.e: get performance on a task suite)](#generating-a-new-ticket)
 2. [Evaluate a saved lottery ticket on other tasks](#evaluating-a-saved-ticket)
-3. [Running the original policy](#running-the-original-policy)
+3. [Running the base policy](#running-the-base-policy)
 
 ## Setup
-We include setup instructions for uv (which we recommend), and conda. Additionally, it helps to set `MUJOCO_GL` to use gpu rendering for faster performance:
+We include setup instructions for uv (which we recommend), and conda. Additionally, it helps to set `MUJOCO_GL` to use GPU rendering for faster performance:
 
 ```bash
 export MUJOCO_GL=egl
@@ -83,7 +83,7 @@ python evaluate.py \
 Set `eval_mode=LOAD_TICKET` and load a ticket by passing `initial_noise.pt` into `noise_path`.
 You can change the `--seed` argument to rollout on different environment seeds.
 
-We provide golden tickets for the different task suites in `lottery_tickets/src/lottery_tickets/smolvla_libero/golden_tickets`. Each folder contains folders that contain `initial_noise.pt` you can try.
+We provide golden tickets for the different task suites in `src/lottery_tickets/smolvla_libero/golden_tickets`. Each folder contains folders that contain `initial_noise.pt` you can try.
 
 ```bash
 python evaluate.py \
@@ -99,11 +99,11 @@ python evaluate.py \
 ```
 
 
-## Running the original policy
+## Running the base policy
 
-Set `eval_mode=ORIGINAL_POLICY`, and the original policy (i.e., sampling from gaussian at all steps) will be evaluated.
+Set `eval_mode=ORIGINAL_POLICY`, and the base policy (i.e., sampling from a Gaussian at every step) will be evaluated.
 Results and videos will be saved to `{output_dir}/original_policy`, but there will be no `initial_noise.pt` saved since it's not used.
-You can vary `n_episodes` to run the original policy multiple times on each task in the task suite `env.task`.
+You can vary `n_episodes` to run the base policy multiple times on each task in the task suite `env.task`.
 
 ```bash
 python evaluate.py \

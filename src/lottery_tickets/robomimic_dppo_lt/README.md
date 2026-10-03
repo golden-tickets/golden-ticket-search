@@ -1,13 +1,13 @@
 # DPPO for robomimic Lottery Ticket Examples
 
 The original DPPO paper released state-based diffusion policy checkpoints for robomimic tasks.
-These checkpoints were used in the original DSRL set of experiments.
+These checkpoints were also used in the DSRL experiments.
 We use these same model checkpoints and show the existence of golden tickets.
 
 We have scripts for:
 1. [Generating new tickets using a base policy](#generate-tickets-with-dppo-robomimic)
-2. [Evaluate the default dppo robomic policy](#evaluate-the-default-dppo-robomic-policy)
-3. [Evaluate golden tickets for dppo robomimic](#evaluate-golden-tickets-for-dppo-robomimic)
+2. [Evaluate the base DPPO robomimic policy](#evaluate-the-base-dppo-robomimic-policy)
+3. [Evaluate golden tickets for DPPO robomimic](#evaluate-golden-tickets-for-dppo-robomimic)
 
 ## Setup
 
@@ -24,7 +24,6 @@ From the repo root, create a virtual environment with `uv`, and install the `dpp
 uv sync --extra dppo-robomimic
 source .venv/bin/activate
 ```
-
 
 For robomimic, you will also need to install the MuJoCo 2.1 binaries as described in [this README](https://github.com/openai/mujoco-py?tab=readme-ov-file#install-mujoco).
 
@@ -57,7 +56,7 @@ python lottery_ticket.py \
     --save_vid
 ```
 
-## Evaluate the default DPPO robomimic policy
+## Evaluate the base DPPO robomimic policy
 
 We can evaluate the base policy performance (i.e., sampling from Gaussian) with a similar script.
 For the `can` task, we typically see a performance in the 40% success range for the base policy performance.
@@ -72,7 +71,7 @@ python dppo_base_eval.py \
     --ddim_steps 8 
 ```
 
-## Evaluate golden tickets for dppo robomimic
+## Evaluate golden tickets for DPPO robomimic
 We provide golden tickets for all robomimic tasks inside `envs100_samples5000_seed999_ddim8_20251130_221846_ddim8`.
 You can then run the following script to evaluate the golden tickets on different environment states by passing the directory path to `eval` parameter and setting `task_name` to the desired task.
 The folder contains multiple tickets, ranked by their performance, so you can use `eval_idx` to select which ticket to run, with `0` representing the best golden ticket. 
