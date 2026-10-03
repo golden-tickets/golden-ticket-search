@@ -13,7 +13,6 @@ All experiment scripts run from the `smolvla_libero` folder, `src/lottery_ticket
 1. [Generate a new lottery ticket (i.e: get performance on a task suite)](#generating-a-new-ticket)
 2. [Evaluate a saved lottery ticket on other tasks](#evaluating-a-saved-ticket)
 3. [Running the original policy](#running-the-original-policy)
-4. TODO: Visualize the results
 
 ## Setup
 We include setup instructions for uv (which we recommend), and conda. Additionally, it helps to set `MUJOCO_GL` to use gpu rendering for faster performance:
@@ -62,7 +61,7 @@ uv pip install hf_egl_probe --no-build-isolation
 Set `eval_mode=NEW_TICKET` to generate a new noise vector (it will be sampled from standard normal), and run `n_episodes` of eval on it for the `env.task` list.
 You can set the seed for the environments by passing `seed` parameter an integer argument (`1000` is the default value).
 The noise vector will be saved to `{output_dir}/{A_UNIQUE_ID}/initial_noise.pt` for future use, along with videos and results.
-(**TODO: batch_size for now is always assumed to be 1, but could be adjusted**).
+`batch_size` is currently always assumed to be 1.
 
 You will be prompted to optionally specify a custom dataset folder path; the default is generally fine.
 

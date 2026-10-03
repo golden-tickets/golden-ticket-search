@@ -1,2 +1,0 @@
-* Error when project.optional-dependencies are not commented out.
-* Can we remove dm_env and dm-robotics-transformations?

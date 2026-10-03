@@ -70,7 +70,6 @@ Depending on the base policy and the ticket drawn, performance can vary signific
 If you'd like to generate a large number of tickets, you can run the following bash script.
 It will generate `n` tickets and make a folder for each of them inside `output_dir`. 
 The example command here generates 25 tickets with 10 environment states (250 episodes), but you can vary this based on your compute budget.
-**(TODO: remove this script and add functionality to python script, requires changing save file dir for hydra)**
 This will create a directory containing a subdirectory for the results of each ticket generated:
 
 ```bash

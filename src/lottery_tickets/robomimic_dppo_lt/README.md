@@ -25,8 +25,6 @@ uv sync --extra dppo-robomimic
 source .venv/bin/activate
 ```
 
-**TODO: simplify the dependencies, not sure we need the stable-baselines for basic results?**
-
 
 For robomimic, you will also need to install the MuJoCo 2.1 binaries as described in [this README](https://github.com/openai/mujoco-py?tab=readme-ov-file#install-mujoco).
 

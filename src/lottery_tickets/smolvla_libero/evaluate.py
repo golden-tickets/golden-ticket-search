@@ -162,7 +162,7 @@ def rollout(
             all_observations.append(deepcopy(observation))
 
         # Infer "task" from attributes of environments.
-        # TODO: works with SyncVectorEnv but not AsyncVectorEnv
+        # Note: this works with SyncVectorEnv but not AsyncVectorEnv.
         observation = add_envs_task(env, observation)
 
         # Apply environment-specific preprocessing (e.g., LiberoProcessorStep for LIBERO)
@@ -367,7 +367,7 @@ def eval_policy(
         else:
             all_seeds.append(None)
 
-        # FIXME: episode_data is either None or it doesn't exist
+        # Note: episode_data is either None or it doesn't exist.
         if return_episode_data:
             this_episode_data = _compile_episode_data(
                 rollout_data,
